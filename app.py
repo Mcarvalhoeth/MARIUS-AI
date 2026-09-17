@@ -2,6 +2,7 @@ from core.llm import ask
 from core.orchestrator import route
 from agents.agenda import prompt as agenda_prompt
 from agents.mercado import prompt as mercado_prompt
+from agents.cripto import prompt as cripto_prompt
 
 def main():
     print("Marius AI online. Digite 'sair' para encerrar.")
@@ -21,6 +22,8 @@ def main():
             message = agenda_prompt(message)
         elif area == "mercado":
             message = mercado_prompt(message)
+        elif area == "cripto":
+            message = cripto_prompt(message)
 
         print("Marius:", ask(message))
 

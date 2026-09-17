@@ -1,6 +1,4 @@
-"""Ponto de entrada inicial do Marius AI."""
-
-from core.orchestrator import route
+from core.llm import ask
 
 def main():
     print("Marius AI online. Digite 'sair' para encerrar.")
@@ -10,7 +8,10 @@ def main():
             print("Marius AI encerrado.")
             break
         if message:
-            print(f"Módulo selecionado: {route(message)}")
+            try:
+                print("Marius:", ask(message))
+            except Exception as error:
+                print("Erro:", error)
 
 if __name__ == "__main__":
     main()

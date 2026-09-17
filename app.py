@@ -1,17 +1,28 @@
 from core.llm import ask
+from core.orchestrator import route
+from agents.agenda import prompt as agenda_prompt
+from agents.mercado import prompt as mercado_prompt
 
 def main():
     print("Marius AI online. Digite 'sair' para encerrar.")
+
     while True:
         message = input("Você: ").strip()
+
         if message.lower() in {"sair", "exit", "quit"}:
-            print("Marius AI encerrado.")
             break
-        if message:
-            try:
-                print("Marius:", ask(message))
-            except Exception as error:
-                print("Erro:", error)
+
+        if not message:
+            continue
+
+        area = route(message)
+
+        if area == "agenda":
+            message = agenda_prompt(message)
+        elif area == "mercado":
+            message = mercado_prompt(message)
+
+        print("Marius:", ask(message))
 
 if __name__ == "__main__":
     main()

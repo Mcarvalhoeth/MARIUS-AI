@@ -1,0 +1,12 @@
+app:
+  name: Marius AI
+  language: pt-BR
+  timezone: America/Sao_Paulo
+
+features:
+  agenda: true
+  email: true
+  mercado: true
+  cripto: true
+  radar: true
+  memory: false
